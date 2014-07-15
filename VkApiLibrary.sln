@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.30324.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VkApiLibrary", "VkApiLibrary\VkApiLibrary.csproj", "{38CD8AB5-9883-4A6C-95D9-04602CD864FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VkApiLibraryTests", "VkApiLibraryTests\VkApiLibraryTests.csproj", "{D8C9391D-C7EE-4A7B-BA4E-68E6D584F3E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{38CD8AB5-9883-4A6C-95D9-04602CD864FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38CD8AB5-9883-4A6C-95D9-04602CD864FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38CD8AB5-9883-4A6C-95D9-04602CD864FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8C9391D-C7EE-4A7B-BA4E-68E6D584F3E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8C9391D-C7EE-4A7B-BA4E-68E6D584F3E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8C9391D-C7EE-4A7B-BA4E-68E6D584F3E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8C9391D-C7EE-4A7B-BA4E-68E6D584F3E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
