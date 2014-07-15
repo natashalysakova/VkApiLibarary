@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Xml;
+﻿using VkApiLibrary.Categories;
 
-namespace VkApiLibrary
+namespace VkApiLibrary.Objects
 {
     public class VkontakteApi
     {
@@ -14,6 +9,7 @@ namespace VkApiLibrary
 
         public UserCategory Users { private set; get; }
         public DatabaseCategory Database { private set; get; }
+        public WallCategory Wall { private set; get; }
 
         public User CurrentUser;
 
@@ -25,7 +21,7 @@ namespace VkApiLibrary
 
             Users = new UserCategory();
             Database = new DatabaseCategory();
-
+            Wall = new WallCategory();
 
             CurrentUser = Users.Get(userId, ProfileFields.all);
         }

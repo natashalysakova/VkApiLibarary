@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VkApiLibrary;
+using VkApiLibrary.Objects;
 
 namespace VkApiLibraryTests
 {
@@ -10,10 +12,24 @@ namespace VkApiLibraryTests
     {
         private VkontakteApi api;
 
+        public void Auth()
+        {
+            AuthForm form = new AuthForm("");
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                int userid; string token;
+                var res = form.GetRes();
+                userid = Convert.ToInt32(res[0]);
+                token = res[1];
+                api = new VkontakteApi(userid, token);
+            }
+        }
+
         [TestMethod]
         public void GetCountriesTestMethod()
         {
-            api = new VkontakteApi(Const.userId, Const.token);
+            Auth();
 
             var countries = api.Database.GetCountries(true, count:1000);
 
@@ -28,7 +44,7 @@ namespace VkApiLibraryTests
         [TestMethod]
         public void GetRegionsTestMethod()
         {
-            api = new VkontakteApi(Const.userId, Const.token);
+            Auth();
 
             var regions = api.Database.GetRegions(api.CurrentUser.Country, String.Empty);
 
@@ -44,7 +60,7 @@ namespace VkApiLibraryTests
         [TestMethod]
         public void GetStreetsByIdTestMethod()
         {
-            api = new VkontakteApi(Const.userId, Const.token);
+            Auth();
 
             var streets = api.Database.GetStreetsById(new []{1});
 
@@ -59,7 +75,7 @@ namespace VkApiLibraryTests
         [TestMethod]
         public void GetCountriesByIdTestMethod()
         {
-            api = new VkontakteApi(Const.userId, Const.token);
+            Auth();
 
             var countries = api.Database.GetCountriesById(new[] { 1 });
 
@@ -74,7 +90,7 @@ namespace VkApiLibraryTests
         [TestMethod]
         public void GetCitiesTestMethod()
         {
-            api = new VkontakteApi(Const.userId, Const.token);
+            Auth();
 
             var countries = api.Database.GetCities(2, String.Empty);
 
@@ -90,7 +106,7 @@ namespace VkApiLibraryTests
         [TestMethod]
         public void GetCitiesByIdTestMethod()
         {
-            api = new VkontakteApi(Const.userId, Const.token);
+            Auth();
 
             var countries = api.Database.GetCitiesById(new[] { 1 });
 
@@ -105,7 +121,7 @@ namespace VkApiLibraryTests
         [TestMethod]
         public void GetUniversitiesTestMethod()
         {
-            api = new VkontakteApi(Const.userId, Const.token);
+            Auth();
 
             var countries = api.Database.GetUniversities(api.CurrentUser.City);
 
@@ -118,7 +134,7 @@ namespace VkApiLibraryTests
         [TestMethod]
         public void GetSchoolsTestMethod()
         {
-            api = new VkontakteApi(Const.userId, Const.token);
+            Auth();
 
             var countries = api.Database.GetSchools(api.CurrentUser.City, count:1000);
 
@@ -131,7 +147,7 @@ namespace VkApiLibraryTests
         [TestMethod]
         public void GetSchoolClassesTestMethod()
         {
-            api = new VkontakteApi(Const.userId, Const.token);
+            Auth();
 
             var countries = api.Database.GetSchoolClasses(api.CurrentUser.Country);
 
@@ -144,7 +160,7 @@ namespace VkApiLibraryTests
         [TestMethod]
         public void GetFacultiesTestMethod()
         {
-            api = new VkontakteApi(Const.userId, Const.token);
+            Auth();
 
             var countries = api.Database.GetFaculties(1);
 
@@ -157,7 +173,7 @@ namespace VkApiLibraryTests
         [TestMethod]
         public void GetChairsTestMethod()
         {
-            api = new VkontakteApi(Const.userId, Const.token);
+            Auth();
 
             var countries = api.Database.GetChairs(1);
 

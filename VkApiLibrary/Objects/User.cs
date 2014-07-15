@@ -1,7 +1,7 @@
 using System;
 using System.Xml;
 
-namespace VkApiLibrary
+namespace VkApiLibrary.Objects
 {
     public class User
     {

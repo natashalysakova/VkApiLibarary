@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Xml;
 
-namespace VkApiLibrary
+namespace VkApiLibrary.Objects
 {
     public static class VkResponse
     {

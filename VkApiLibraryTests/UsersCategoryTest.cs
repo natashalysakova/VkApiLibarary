@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VkApiLibrary;
+using VkApiLibrary.Objects;
 
 namespace VkApiLibraryTests
 {
@@ -10,14 +12,29 @@ namespace VkApiLibraryTests
     {
         private VkontakteApi api;
 
+        public void Auth()
+        {
+            AuthForm form = new AuthForm("");
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                int userid; string token;
+                var res = form.GetRes();
+                userid = Convert.ToInt32(res[0]);
+                token = res[1];
+                api = new VkontakteApi(userid, token);
+            }
+        }
+
         [TestMethod]
         public void GetTestMethod()
         {
-            api = new VkontakteApi(Const.userId, Const.token);
+            Auth();
 
             User me;
-            me = api.Users.Get(Const.userId, new[] { ProfileFields.sex, ProfileFields.bdate }, NameCase.dat);
-            Assert.AreEqual(me.Id, Const.userId);
+            
+            me = api.Users.Get(api.CurrentUser.Id, new[] { ProfileFields.sex, ProfileFields.bdate }, NameCase.dat);
+            Assert.AreEqual(me.Id, api.CurrentUser.Id);
             Console.WriteLine(me.FirstName);
 
             Assert.AreEqual(string.Empty, me.Deactivated);
@@ -34,7 +51,8 @@ namespace VkApiLibraryTests
         public void SearchTestMethod()
         {
 
-            api = new VkontakteApi(Const.userId, Const.token);
+            Auth();
+
             int count;
             List<User> users = api.Users.Search("Лысакова Наташа", Sort.ByPopularity, out count, 0,
                 new SearchProfileFields[]

@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Categories\WallCategory.cs" />
     <Compile Include="Enums\CountryCode.cs" />
     <Compile Include="Categories\DatabaseCategory.cs" />
     <Compile Include="Enums\NameCase.cs" />
@@ -47,6 +48,9 @@
     <Compile Include="Enums\SearchProfileFields.cs" />
     <Compile Include="Enums\Sex.cs" />
     <Compile Include="Enums\Sort.cs" />
+    <Compile Include="Objects\Attachment.cs" />
+    <Compile Include="Enums\AttachmentType.cs" />
+    <Compile Include="Enums\Services.cs" />
     <Compile Include="Objects\User.cs" />
     <Compile Include="Categories\UserCategory.cs" />
     <Compile Include="Objects\VkontakteApi.cs" />
